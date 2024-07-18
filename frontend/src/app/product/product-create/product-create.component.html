@@ -1,0 +1,24 @@
+<div class="produto-create-container">
+  <h2>Create Product</h2>
+  <form [formGroup]="produtoForm" (ngSubmit)="onCreate()">
+    <div>
+      <label for="descricao">Description</label>
+      <input id="descricao" formControlName="descricao" type="text">
+    </div>
+    <div>
+      <label for="valor">Price</label>
+      <input id="valor" formControlName="valor" type="number">
+    </div>
+    <div>
+      <label for="categoria">Category</label>
+      <select id="categoria" formControlName="categoriaId">
+        <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.descricao }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="estoque">Stock</label>
+      <input id="estoque" formControlName="estoque" type="number">
+    </div>
+    <button type="submit">Create</button>
+  </form>
+</div>

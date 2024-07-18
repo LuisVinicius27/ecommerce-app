@@ -1,0 +1,16 @@
+<div class="venda-create-container">
+  <h2>Create Sale</h2>
+  <form [formGroup]="vendaForm" (ngSubmit)="onCreate()">
+    <div>
+      <label for="produto">Product</label>
+      <select id="produto" formControlName="produtoId">
+        <option *ngFor="let produto of produtos" [value]="produto.id">{{ produto.descricao }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="quantidade">Quantity</label>
+      <input id="quantidade" formControlName="quantidade" type="number">
+    </div>
+    <button type="submit">Create</button>
+  </form>
+</div>
