@@ -7,7 +7,7 @@ import { Usuario } from './user.model';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = 'http://localhost:8000/usuarios';
+  private apiUrl = 'http://localhost:8000/user';
 
   constructor(private http: HttpClient) {}
 

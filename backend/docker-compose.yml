@@ -1,47 +1,11 @@
-version: '26.1.4'
-
 services:
-  backend:
-    build:
-      context: ./app  # Diretório correto onde está o Dockerfile do backend
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
-    environment:
-      - POSTGRES_USER=your_postgres_user
-      - POSTGRES_PASSWORD=your_postgres_password
-      - POSTGRES_DB=your_postgres_db
-      - DATABASE_URL=postgresql://your_postgres_user:your_postgres_password@postgres:5432/your_postgres_db
-      - JWT_SECRET_KEY=your_jwt_secret_key
-    depends_on:
-      - postgres
-    networks:
-      - app-network
-
-  frontend:
-    build:
-      context: ./frontend 
-      dockerfile: Dockerfile
-    ports:
-      - "4200:80"  
-    networks:
-      - app-network
-
   postgres:
-    image: postgres:latest
+    image: postgres:16
+    container_name: postgres
     environment:
-      - POSTGRES_USER=your_postgres_user
-      - POSTGRES_PASSWORD=your_postgres_password
-      - POSTGRES_DB=your_postgres_db
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
-
-volumes:
-  pgdata:
-    driver: local
+      POSTGRES_USER: example_user
+      POSTGRES_PASSWORD: example_password
+      POSTGRES_DB: example_database
+      PGUSER: example_user
+    ports:
+      - "5432:5432"
